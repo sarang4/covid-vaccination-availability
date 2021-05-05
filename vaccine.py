@@ -24,11 +24,41 @@ def fetch(district_id):
         return
 
 
-if __name__ == "__main__":
-    ap = argparse.ArgumentParser()
-    ap.add_argument("-d", "--district_id", required=True, help="District Id")
-    args = vars(ap.parse_args())
+def get_distric_id(args):
+    url = "https://cdn-api.co-vin.in/api/v2/admin/location/districts/%s" % (args.state_id)
+    res = requests.get(url)
+    if res.status_code == 200:
+        for i in res.json()["districts"]:
+            print ("%s: %s" % (i["district_name"], i["district_id"]))
+
+def get_state_id(args):
+    url = "https://cdn-api.co-vin.in/api/v2/admin/location/states"
+    res = requests.get(url)
+    if res.status_code == 200:
+        for i in res.json()["states"]:
+            print ("%s: %s" % (i["state_name"], i["state_id"]))
+
+def get_availability(args):
     while True:
-        fetch(args["district_id"])
+        fetch(args.district_id)
         print("Sleeping....")
         time.sleep(1)
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    subparsers = ap.add_subparsers(help='Sub commands for use')
+
+    parser_a = subparsers.add_parser('states', help='states list command help')
+    parser_a.set_defaults(func=get_state_id)
+    
+    parser_b = subparsers.add_parser('district', help='district list command help')
+    parser_b.add_argument("-s", "--state_id", required=True, help="State Id")
+    parser_b.set_defaults(func=get_distric_id)
+
+    parser_c = subparsers.add_parser('availability', help='Slot Availability Command')
+    parser_c.add_argument("-d", "--district_id", required=True, help="Need distric id")
+    parser_c.set_defaults(func=get_availability)
+
+    args = ap.parse_args()
+    args.func(args)
