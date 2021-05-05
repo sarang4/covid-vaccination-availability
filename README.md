@@ -1,9 +1,20 @@
-# covid-vaccination-availability
+# Covid Vaccination Availability
+Small script which provides quick updates regarding vaccination availability as per your state.
 
-Usages:
+## Installation
+
+Need requests package to run the this
+
+```bash
+pip install requests
+```
+
+## Usage
+
+```
 python vacination.py -h
-usage: vaccine.py [-h] {states,district,availability}
 
+usage: vaccine.py [-h] {states,district,availability}
 positional arguments:
   {states,district,availability} Sub commands for use
     states              states list command help
@@ -12,9 +23,11 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
+```
 
-
+```
 python vaccine.py states
+
 Andaman and Nicobar Islands: 1
 Andhra Pradesh: 2
 Arunachal Pradesh: 3
@@ -52,14 +65,16 @@ Tripura: 33
 Uttar Pradesh: 34
 Uttarakhand: 35
 West Bengal: 36
+```
 
-
-
+```
 python vaccine.py district
+
 usage: vaccine.py district [-h] -s STATE_ID
 vaccine.py district: error: argument -s/--state_id is required
+```
 
-
+```
 python vaccine.py district -s 21
 Ahmednagar: 391
 Akola: 364
@@ -96,17 +111,20 @@ Thane: 392
 Wardha: 377
 Washim: 369
 Yavatmal: 368
+```
 
-
+```
 python vaccine.py availability -h
 usage: vaccine.py availability [-h] -d DISTRICT_ID
 
 optional arguments:
   -h, --help            show this help message and exit
   -d DISTRICT_ID, --district_id DISTRICT_ID
-                        Need distric id
-
+                        Need district id
+```
+```
 python vaccine.py availability -d 363
+
 <Response [200]>
 Not Available...
 Sleeping....
@@ -116,3 +134,7 @@ Sleeping....
 <Response [200]>
 Not Available...
 Sleeping....
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
