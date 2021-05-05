@@ -2,11 +2,10 @@
 
 Usages:
 python vacination.py -h
-usage: vaccine.py [-h] {states,district,availability} ...
+usage: vaccine.py [-h] {states,district,availability}
 
 positional arguments:
-  {states,district,availability}
-                        Sub commands for use
+  {states,district,availability} Sub commands for use
     states              states list command help
     district            district list command help
     availability        Slot Availability Command
@@ -15,7 +14,7 @@ optional arguments:
   -h, --help            show this help message and exit
 
 
-➜  covid-vaccination-availability git:(main) ✗ python vaccine.py states
+python vaccine.py states
 Andaman and Nicobar Islands: 1
 Andhra Pradesh: 2
 Arunachal Pradesh: 3
@@ -56,11 +55,12 @@ West Bengal: 36
 
 
 
-➜  covid-vaccination-availability git:(main) ✗ python vaccine.py district
+python vaccine.py district
 usage: vaccine.py district [-h] -s STATE_ID
 vaccine.py district: error: argument -s/--state_id is required
 
-➜  covid-vaccination-availability git:(main) ✗ python vaccine.py district -s 21
+
+python vaccine.py district -s 21
 Ahmednagar: 391
 Akola: 364
 Amravati: 366
@@ -96,14 +96,17 @@ Thane: 392
 Wardha: 377
 Washim: 369
 Yavatmal: 368
-➜  covid-vaccination-availability git:(main) ✗ python vaccine.py availability -h
+
+
+python vaccine.py availability -h
 usage: vaccine.py availability [-h] -d DISTRICT_ID
 
 optional arguments:
   -h, --help            show this help message and exit
   -d DISTRICT_ID, --district_id DISTRICT_ID
                         Need distric id
-➜  covid-vaccination-availability git:(main) ✗ python vaccine.py availability -d 363
+
+python vaccine.py availability -d 363
 <Response [200]>
 Not Available...
 Sleeping....
