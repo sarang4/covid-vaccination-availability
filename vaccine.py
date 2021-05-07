@@ -42,7 +42,7 @@ def get_availability(args):
     while True:
         fetch(args.district_id)
         print("Sleeping....")
-        time.sleep(1)
+        time.sleep(3)
 
 
 if __name__ == "__main__":
