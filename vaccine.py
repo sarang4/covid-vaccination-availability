@@ -2,6 +2,7 @@
 import time, os
 import requests, argparse
 from datetime import datetime
+import playsound
 
 
 def fetch(district_id):
@@ -32,6 +33,7 @@ def fetch(district_id):
                 for j in i['sessions']:
                     if j['min_age_limit'] == 18 and j['available_capacity'] >= 2:
                         available_flag = True
+                        playsound.playsound('available.mp3', True)
                         print (i['name'], i['pincode'], i['fee_type'], j['date'], j['available_capacity'], j['slots'])
             if not available_flag:
                 print("Not Available...")
