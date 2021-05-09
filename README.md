@@ -7,6 +7,7 @@ Need requests package to run the this
 
 ```bash
 pip install requests
+pip install playsound
 ```
 
 ## Usage
